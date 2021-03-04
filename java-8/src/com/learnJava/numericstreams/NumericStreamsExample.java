@@ -18,7 +18,6 @@ public class NumericStreamsExample {
 
         return IntStream.rangeClosed(1,6)
                 .sum(); //saves the unboxing effort.
-
     }
 
     public static void main(String[] args) {

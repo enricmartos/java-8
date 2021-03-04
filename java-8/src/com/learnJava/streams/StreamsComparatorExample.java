@@ -39,6 +39,5 @@ public class StreamsComparatorExample {
 
         System.out.println("Students sorted by GPA Higher to Lower");
         sortStudentsByGpaReversed().forEach(System.out::println);
-
     }
 }

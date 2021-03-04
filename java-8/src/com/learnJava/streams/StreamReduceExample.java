@@ -4,13 +4,8 @@ import com.learnJava.data.Student;
 import com.learnJava.data.StudentDataBase;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.maxBy;
-import static java.util.stream.Collectors.toList;
 
 public class StreamReduceExample {
 
@@ -18,7 +13,6 @@ public class StreamReduceExample {
 
         return integerList.stream()
                 .reduce(1, (a,b) -> a*b);
-
     }
 
     public static Optional<Integer> performMultiplicationWithNoInitialValue(List<Integer> integerList){
@@ -32,23 +26,18 @@ public class StreamReduceExample {
         return StudentDataBase.getAllStudents().stream()
                 .map(Student::getName)
                 .distinct()
-                .reduce("",(a,b) -> a.concat(b));  // performs multiplication for each element in the stream.
+                .reduce("", String::concat);  // performs multiplication for each element in the stream.
     }
 
     public static Optional<Student> getHighestGradeStudent(){
 
-        Optional<Student> studentOptional =  StudentDataBase.getAllStudents().stream()
+        return StudentDataBase.getAllStudents().stream()
                 .reduce((s1,s2)->(s1.getGpa()>s2.getGpa()) ? s1 : s2);
-        return studentOptional;
     }
-
-
-
 
     public static void main(String[] args) {
 
         List<Integer> integerList = Arrays.asList(1,3,5,7);
-        //List<Integer> integerList = Arrays.asList();
 
         System.out.println("Result is : " + performMultiplication(integerList));
         Optional<Integer> result = performMultiplicationWithNoInitialValue(integerList);

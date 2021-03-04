@@ -7,22 +7,21 @@ import java.util.Optional;
 
 public class StreamsFindAnyFirstExample {
 
-    public static Optional<Student> findAny(){
+    public static Optional<Student> findAny() {
 
         return StudentDataBase.getAllStudents().stream()
-                .filter(student -> student.getGpa()>=3.8)
+                .filter(student -> student.getGpa() >= 3.8)
                 .findAny();
     }
 
-    public static Optional<Student> findFirst(){
+    public static Optional<Student> findFirst() {
 
         return StudentDataBase.getAllStudents().stream()
-                .filter(student -> student.getGpa()>=3.8)
+                .filter(student -> student.getGpa() >= 3.8)
                 .findFirst();
     }
 
     public static void main(String[] args) {
-
         Optional<Student> findAnyStudent = findAny();
         if(findAnyStudent.isPresent()){
             System.out.println("Student is :" + findAnyStudent.get());
@@ -37,6 +36,5 @@ public class StreamsFindAnyFirstExample {
             System.out.println("No Student Found");
         }
         //it will make a lot of different during parallel stream
-
     }
 }

@@ -14,34 +14,29 @@ import static java.util.stream.Collectors.toSet;
 
 public class StreamsMapExample {
 
+    private static List<String> namesUpperCase(List<Student> names) {
 
-    private static List<String> namesUpperCase(List<Student> names){
-        List<String> namesUpperCase = names.stream() //Stream<Student>
+        return names.stream() //Stream<Student>
                 .map(Student::getName) //Stream<String>
                 .map(String::toUpperCase) // Stream<String> -> UpperCase
-                .collect(toList()); // returns List // terminal operation
-        return namesUpperCase;
+                .collect(toList());
     }
 
-    private static Set<String> namesSetUpperCase(List<Student> students){
-        Set<String> namesUpperCase = students.stream() //Stream<Student>
+    private static Set<String> namesSetUpperCase(List<Student> students) {
+
+        return students.stream() //Stream<Student>
                 .map(Student::getName) //Stream<String>
                 .map(String::toUpperCase) // Stream<String> -> UpperCase
-                .collect(toSet()); // returns List // terminal operation
-        return namesUpperCase;
+                .collect(toSet());
     }
 
-    private static Map<String, Integer>  namesLengthMap(ArrayList<String> names){
+    private static Map<String, Integer>  namesLengthMap(ArrayList<String> names) {
 
-        Map<String, Integer> namesLengthMap = names.stream()//Stream<String>
-                .collect(toMap(String::toString,String::length)); // returns Map
-
-        return namesLengthMap;
+        return names.stream()//Stream<String>
+                .collect(toMap(String::toString, String::length));
     }
-
 
     public static void main(String[] args) {
-
         ArrayList<String> names = new ArrayList<>();
         names.add("adam");
         names.add("dan");
@@ -50,7 +45,6 @@ public class StreamsMapExample {
         System.out.println("namesUpperCase List : " + namesUpperCase(StudentDataBase.getAllStudents()));
         System.out.println("namesUpperCase Set : " + namesSetUpperCase(StudentDataBase.getAllStudents()));
         System.out.println("namesLengthMap : " + namesLengthMap(names));
-
     }
 
 }

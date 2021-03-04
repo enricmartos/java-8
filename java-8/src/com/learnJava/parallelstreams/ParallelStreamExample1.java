@@ -4,13 +4,12 @@ import com.learnJava.data.Student;
 import com.learnJava.data.StudentDataBase;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static java.util.stream.Collectors.toList;
 
 public class ParallelStreamExample1 {
 
-   public static List<String> sequentialStream(){
+   public static List<String> sequentialStream() {
 
        long start = System.currentTimeMillis();
         List<String> studentActivities = StudentDataBase.getAllStudents()
@@ -25,7 +24,7 @@ public class ParallelStreamExample1 {
         return studentActivities;
     }
 
-    public static List<String> parallelStream(){
+    public static List<String> parallelStream() {
 
         long start = System.currentTimeMillis();
         List<String> studentActivities = StudentDataBase.getAllStudents()
